@@ -21,7 +21,7 @@
           />
         </div>
         <div class="flex">
-          <div class="form_control">
+          <div class="form_control w-50">
             <label for="fname">First name</label>
             <input
               type="text"
@@ -31,7 +31,7 @@
               v-model="firstName"
             />
           </div>
-          <div class="form_control">
+          <div class="form_control w-50">
             <label for="lname">Last Name</label>
             <input
               type="text"
@@ -71,13 +71,13 @@
           />
         </div>
         <div class="form_control submit_button relative">
-          <input type="submit" value="Register Now" />
+          <input type="submit" value="Register Now" class="cursor-pointer" />
           <div class="spinner" v-if="registerLoading">
             <Loader />
           </div>
         </div>
         <div class="text_center">
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <nuxt-link href="/login">Login</nuxt-link>
         </div>
       </form>
     </div>
@@ -141,11 +141,13 @@ export default {
           password,
           confirmPassword,
         });
+        alert('user registered successsfully')
         this.$router.push('/login');
       } catch (e) {
         console.error(e);
+        alert(e.message)
       }
-    
+    this.registerLoading = true;
     },
   },
 };

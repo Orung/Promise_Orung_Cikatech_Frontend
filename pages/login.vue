@@ -4,7 +4,7 @@
       <img src="~assets/images/bg-banner.png" alt="" />
       <div class="side_img_overlay"></div>
     </div>
-    <div class="form_section">
+    <div class="form_section login-center">
       <div class="title">
         <p>Welcome back</p>
         <h1>Login to your account</h1>
@@ -35,11 +35,11 @@
             <input type="checkbox" id="remember" name="remember" />
           </div>
           <div>
-            <a href="/">Forget password</a>
+            <a href="/">Forget password?</a>
           </div>
         </div>
         <div class="form_control submit_button relative">
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" class="cursor-pointer" />
           <div class="spinner" v-if="registerLoading">
             <Loader />
           </div>
@@ -68,16 +68,23 @@ export default {
   },
   methods: {
     async login() {
+      if(!username || !password){
+        alert
+      }
       const { username, password } = this;
 
       try {
         await this.$auth.loginWith("local", {
           data: { username, password },
         });
+        alert('Loggin Successful')
         this.$router.push("/dashboard");
       } catch (err) {
-        // console.log(err);
+        console.log(err);
       }
+      setTimeout(() => {
+        this.registerLoading = true
+      }, 100);
     },
   },
 };
