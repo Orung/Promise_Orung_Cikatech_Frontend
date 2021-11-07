@@ -21,7 +21,7 @@
           />
         </div>
         <div class="flex">
-          <div class="form_control">
+          <div class="form_control w-50">
             <label for="fname">First name</label>
             <input
               type="text"
@@ -31,7 +31,7 @@
               v-model="firstName"
             />
           </div>
-          <div class="form_control">
+          <div class="form_control w-50">
             <label for="lname">Last Name</label>
             <input
               type="text"
@@ -141,11 +141,13 @@ export default {
           password,
           confirmPassword,
         });
+        alert('user registered successsfully')
         this.$router.push('/login');
       } catch (e) {
         console.error(e);
+        alert(e.message)
       }
-    
+    this.registerLoading = true;
     },
   },
 };

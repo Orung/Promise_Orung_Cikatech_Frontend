@@ -35,7 +35,7 @@
             <input type="checkbox" id="remember" name="remember" />
           </div>
           <div>
-            <a href="/">Forget password</a>
+            <a href="/">Forget password?</a>
           </div>
         </div>
         <div class="form_control submit_button relative">
@@ -68,16 +68,24 @@ export default {
   },
   methods: {
     async login() {
+      if(!username || !password){
+        alert
+      }
       const { username, password } = this;
 
       try {
         await this.$auth.loginWith("local", {
           data: { username, password },
         });
+        alert('Loggin Successful')
         this.$router.push("/dashboard");
       } catch (err) {
-        // console.log(err);
+        console.log(err);
+        alert(err)
       }
+      setTimeout(() => {
+        this.registerLoading = true
+      }, 100);
     },
   },
 };
