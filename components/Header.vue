@@ -27,7 +27,7 @@
           <span>Product designer</span>
         </li>
         <li>
-          <button class="btn btn_logout" @click="logOut()">Logout</button>
+          <button class="btn btn_logout cursor-pointer" @click="logOut()">Logout</button>
         </li>
       </ul>
     </div>

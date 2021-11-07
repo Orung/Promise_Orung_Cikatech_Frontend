@@ -41,11 +41,19 @@ body {
   font-size: 30px;
   color: #1a202c;
 }
+.login-center{    
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .auth_page form .form_control {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 11px;
+}
+.cursor-pointer{
+    cursor: pointer;
 }
 .remember_pass {
   display: flex;

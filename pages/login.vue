@@ -4,7 +4,7 @@
       <img src="~assets/images/bg-banner.png" alt="" />
       <div class="side_img_overlay"></div>
     </div>
-    <div class="form_section">
+    <div class="form_section login-center">
       <div class="title">
         <p>Welcome back</p>
         <h1>Login to your account</h1>
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="form_control submit_button relative">
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" class="cursor-pointer" />
           <div class="spinner" v-if="registerLoading">
             <Loader />
           </div>
@@ -81,7 +81,6 @@ export default {
         this.$router.push("/dashboard");
       } catch (err) {
         console.log(err);
-        alert(err)
       }
       setTimeout(() => {
         this.registerLoading = true

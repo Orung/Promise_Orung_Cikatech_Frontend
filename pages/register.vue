@@ -71,13 +71,13 @@
           />
         </div>
         <div class="form_control submit_button relative">
-          <input type="submit" value="Register Now" />
+          <input type="submit" value="Register Now" class="cursor-pointer" />
           <div class="spinner" v-if="registerLoading">
             <Loader />
           </div>
         </div>
         <div class="text_center">
-          Already have an account? <a href="/login">Login</a>
+          Already have an account? <nuxt-link href="/login">Login</nuxt-link>
         </div>
       </form>
     </div>
