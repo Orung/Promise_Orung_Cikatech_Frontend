@@ -1,3 +1,5 @@
+// import { filter } from "core-js/core/array";
+
 export const state = () => ({
   posts: [],
   isLoading: false,
@@ -10,7 +12,8 @@ export const mutations = {
   },
   IS_LOADING (state, payload) {
     state.isLoading = payload;
-  }
+  },
+  removePost:(state, id) => state.posts = state.posts/filter(post => post.id !== id)
 };
 
 export const actions = {
@@ -32,6 +35,17 @@ export const actions = {
       dispatch('getPosts');
       commit('IS_LOADING', false);
     } catch(e) {
+      commit('IS_LOADING', false);
+    }
+  },
+  async deletePost({ commit }, id) {
+    try {
+      commit('IS_LOADING', true);
+      await axios.delete(`/post/delete/${postId}`);
+      commit('REMOVE_POST', id);
+      commit('IS_LOADING', false);
+    } catch (e) {
+      console.error(e)
       commit('IS_LOADING', false);
     }
   }  

@@ -18,7 +18,7 @@
     <div class="card_post" v-for="post in posts" :key="post.id">
       <div class="user_post">
         <h5>{{ post.author }}</h5>
-        <div class="cursor-pointer">
+        <div class="cursor-pointer" @click="deletePost(post.id)">
           <svg
             width="14"
             height="4"
@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   layout: "dashboard",
   auth: false,
@@ -77,11 +77,7 @@ export default {
         this.$store.dispatch("createPost", content);
       }
     },
-    async deletePost(id) {
-      this.axios.delete(`/api/post/delete/${postId}`).then((result) => {
-        this.addPost();
-      });
-    },
+       ...mapActions(["deletePost"])
   },
 };
 </script>
